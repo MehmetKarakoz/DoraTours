@@ -1,0 +1,38 @@
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section about">
+            <img src="/Dora_logo.png" alt="">
+            <p>Şirket açıklaması burada yer alacak. Şirketin misyonu, vizyonu veya diğer bilgileri buraya yazabilirsiniz.</p>
+            <div class="footer-socials">
+                <a href="https://www.facebook.com/?locale=tr_TR" class="mr-2" id="facebook"><img src="assets/facebook.png" alt="Facebook"></a>
+                <a href="https://x.com/?lang=tr" class="mr-2" id="twitter"><img src="assets/twitter.png" alt="Twitter"></a>
+                <a href="https://www.instagram.com" id="instagram"><img src="assets/instagram.png" alt="Instagram"></a>
+            </div>
+        </div>
+        <div class="footer-section links">
+            <h2 class="footer-title">Lokasyonumuz</h2>
+            <iframe src="https://www.google.com/maps/embed?..." width="330" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="footer-section contact-form">
+            <h2 class="footer-title">İletişim</h2>
+            <form [formGroup]="contactForm" class="space-y-6" (ngSubmit)="sendEmail()">
+                <div>
+                    <input type="text" id="name" formControlName="name" placeholder="Adınız Soyadınız" required>
+                    <div ngIf="contactForm.get('name')?.invalid && (contactForm.get('name')?.dirty || contactForm.get('name')?.touched)" class="error-message">
+                    </div>
+                </div>
+                <div>
+                    <input type="email" id="email" formControlName="email" placeholder="E-posta" required>
+                    <div ngIf="contactForm.get('email')?.invalid && (contactForm.get('email')?.dirty || contactForm.get('email')?.touched)" class="error-message">
+                    </div>
+                </div>
+                <div>
+                    <textarea id="message" formControlName="message" placeholder="Mesajınız" required></textarea>
+                    <div ngIf="contactForm.get('message')?.invalid && (contactForm.get('message')?.dirty || contactForm.get('message')?.touched)" class="error-message">
+                    </div>
+                </div>
+                <button type="submit" [disabled]="contactForm.invalid">Gönder</button>
+            </form>
+        </div>
+    </div>
+</footer>

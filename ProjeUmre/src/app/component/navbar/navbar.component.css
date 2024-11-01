@@ -1,0 +1,108 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1000;
+}
+
+.background {
+  background: linear-gradient(135deg, #0d0d0d 0%, #333333 100%);
+}
+
+.navbar .logo a {
+  font-size: 1.8em;
+  color: #d4af37; /* Altın sarısı */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar .menu-bar {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar .menu-bar li {
+  margin: 0 20px;
+  transition: all 0.3s ease;
+}
+
+.navbar .menu-bar li a {
+  color: #d4af37; /* Altın sarısı */
+  text-decoration: none;
+  font-size: 1em;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar .menu-bar li a:hover {
+  background-color: #333; /* Hafif siyah geçiş */
+  color: #fff;
+}
+
+.menu-icon {
+  margin-top:10px;
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-icon .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #d4af37;
+  margin: 3px 0;
+  transition: 0.4s;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+  }
+
+  .menu-icon {
+    display: flex;
+    z-index: 1002; /* Menü ikonunu her zaman üstte tutmak için */
+    position: fixed; /* Menü ikonunu sabitlemek için */
+    top: 15px;
+    right: 20px;
+  }
+
+  .navbar .menu-bar {
+    flex-direction: column;
+    background-color: #333; /* Hafif siyah arka plan */
+    position: fixed;
+    top: 0;
+    right: -200px; /* Başlangıçta ekran dışında */
+    width: 200px;
+    height: 100vh; /* Tam ekran yüksekliği */
+    padding: 60px 20px 20px; /* Üstte navbar için yer bırakır */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+    transition: right 0.3s ease;
+    z-index: 1001; /* Navbar'dan daha yüksek z-index */
+    overflow-y: auto; /* İçerik sığmazsa kaydırma çubuğu ekler */
+  }
+
+  .navbar .menu-bar.active {
+    right: 0; /* Aktif olduğunda ekrana girer */
+  }
+
+  .navbar .menu-bar li {
+    margin: 15px 0;
+  }
+
+  /* Menü açıkken navbar'ı gizle */
+  .navbar.menu-open {
+    visibility: hidden;
+  }
+
+  /* Menü açıkken sadece menü ikonunu göster */
+  .navbar.menu-open .menu-icon {
+    visibility: visible;
+  }
+}

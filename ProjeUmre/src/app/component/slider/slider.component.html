@@ -1,0 +1,34 @@
+<div class="slider  h-auto rounded-t-lg  ">
+    <p-galleria
+        #galleria
+        [value]="images"
+        [(activeIndex)]="activeIndex"
+        [numVisible]="5"
+        [showThumbnails]="showThumbnails"
+        [showItemNavigators]="true"
+        [showItemNavigatorsOnHover]="true"
+        [circular]="true"
+        [autoPlay]="true"
+        [transitionInterval]="3000"
+        [containerStyle]="{ 'max-width': '100%', }"
+        [containerClass]="galleriaClass()"
+    >
+        <ng-template pTemplate="item" let-item>
+            <img class="rounded-t-lg"
+                [src]="item.itemImageSrc" 
+                [ngStyle]="{ width: '100%', height: '850px' }" 
+                alt="{{item.alt}}" 
+                [title]="item.title"
+            />
+        </ng-template>
+        <ng-template pTemplate="thumbnail" let-item let-i="index">
+            <div class="thumbnail" [ngStyle]="{ backgroundColor: i === activeIndex ? '#d4af37' : '#333' }">
+                <img 
+                    [src]="item.thumbnailImageSrc" 
+                    [ngStyle]="{ width: '100%', height: 'auto', filter: i === activeIndex ? 'brightness(100%)' : 'brightness(70%)' }" 
+                    alt="{{item.alt}}"
+                />
+            </div>
+        </ng-template>
+    </p-galleria>
+</div>

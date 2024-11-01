@@ -1,0 +1,33 @@
+<div class="min-h-screen w-full py-12 flex justify-center items-start ">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    <!-- Kartlar için bir kapsayıcı -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      @for (card of cards; track $index) {
+        <div class="card-container">
+          <div class="card border rounded-lg overflow-hidden shadow-lg flex flex-col">
+            <!-- Sol taraf: Resim -->
+            <div class="w-full">
+              <img [src]="card.imageSrc" class="w-full h-64 object-cover">
+            </div>
+            <!-- Sağ taraf: Açıklama -->
+            <div class="p-6 bg-gray-800 h-full text-white">
+              <h3 class="text-xl font-semibold mb-2 text-amber-400">{{card.title}}</h3>
+              <p class="text-sm mb-1"><strong>Tour Code:</strong> {{card.tourCode}}</p>
+              <p class="text-sm mb-1"><strong>Dates:</strong> {{card.dates}}</p>
+              <div class="mb-2">
+                <strong class="text-sm">Flights:</strong>
+                <ul class="list-disc list-inside pl-5">
+                  @for (flight of card.flights; track $index) {
+                    <li class="text-sm">{{flight}}</li>
+                  }
+                </ul>
+              </div>
+              <p class="text-sm mb-1"><strong>Airline:</strong> {{card.airline}}</p>
+              <p class="text-lg font-bold text-yellow-400">{{card.price}}</p>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

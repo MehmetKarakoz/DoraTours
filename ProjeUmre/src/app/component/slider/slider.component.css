@@ -1,0 +1,47 @@
+.slider {
+    .thumbnail {
+        border: 1px solid #d4af37; /* Altın sarısı kenarlık */
+        border-radius: 5px;
+        transition: transform 0.3s ease;
+    }
+    .thumbnail img:hover {
+        transform: scale(1.1);
+    }
+    .p-galleria-item-nav {
+        background-color: rgba(212, 175, 55, 0.7); /* Altın sarısı arka plan */
+        color: #fff;
+        border-radius: 50%;
+        transition: background-color 0.3s ease;
+    }
+    .p-galleria-item-nav:hover {
+        background-color: rgba(212, 175, 55, 1); /* Daha koyu altın sarısı */
+    }
+}
+
+
+.slider img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Orta boyutlu cihazlar için */
+@media (max-width: 1024px) {
+    .slider img {
+        height: 700px;
+    }
+}
+
+/* Küçük boyutlu cihazlar için */
+@media (max-width: 768px) {
+    .slider img {
+        height: 500px;
+    }
+}
+
+/* Mobil cihazlar için */
+@media (max-width: 560px) {
+    .slider img {
+        height: 300px;
+    }
+}

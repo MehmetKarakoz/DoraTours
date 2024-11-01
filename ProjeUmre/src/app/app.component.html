@@ -1,0 +1,19 @@
+<div class="background">
+  <app-scroll-to-top> </app-scroll-to-top>
+  <a href="https://wa.me/+905413200606" class="whatsapp-float" target="_blank">
+    <img src="assets\whatsapp-icon-png.png" alt="WhatsApp" class="whatsapp-icon">
+</a>
+
+    <app-navbar></app-navbar>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+  <!-- <app-slider></app-slider>
+    <app-content> </app-content> -->
+  @if (this.service.cardDisable()) {
+
+  <app-card-area></app-card-area>} 
+  @if (this.service.disableCard()) {
+  <app-footer />
+  }
+</div>

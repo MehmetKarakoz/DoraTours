@@ -1,0 +1,65 @@
+@if (this.service.cardvisible()) {
+<div class="card-grid w-full">
+  @for (item of cards; track $index) {
+    <div class="card">
+      <div (click)="showDialog(item)" class="card-inner cursor-pointer">
+        <div class="card-image-wrapper">
+          <img [src]="item.imageSrc" class="card-img">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">{{item.title}}</h3>
+          <p class="card-description">{{item.description}}</p>
+        </div>
+      </div>
+    </div>
+  }
+</div>
+
+<p-dialog [(visible)]="displayDialog" header={{selectedCard?.header}} [style]="{width: '50vw'}" [modal]="true" [draggable]="false" [resizable]="false">
+  @if (selectedCard) {
+    <ng-template pTemplate="header">
+      {{selectedCard.title}}
+    </ng-template>
+    <p>{{selectedCard.detailedContent}}</p>
+    <ng-template pTemplate="footer">
+      <p-button icon="pi pi-check" (click)="displayDialog=false" label="Kapat" styleClass="p-button-text"></p-button>
+    </ng-template>
+  }
+</p-dialog>
+}
+
+
+@else {
+  <div class="card-grids w-full ">
+    @for (item of cards; track $index) {
+      <div class="cards ">
+        <div (click)="showDialog(item)" class="card-inner cursor-pointers">
+          <div class="card-content-wrappers">
+            <div class="card-image-wrappers">
+              <img [src]="item.imageSrc" class="card-imgs">
+            </div>
+            <div class="card-contents place-self-center">
+              <h3 class="card-titles">{{item.title}}</h3>
+              <p class="card-descriptions">{{item.detailedContent}}</p>
+            </div>
+          </div>
+        </div>
+        
+        
+        
+      </div>
+    }
+  </div>
+  
+  <p-dialog [(visible)]="displayDialog" header={{selectedCard?.header}} [style]="{width: '50vw'}" [modal]="true" [draggable]="false" [resizable]="false">
+    @if (selectedCard) {
+      <ng-template pTemplate="header">
+        {{selectedCard.title}}
+      </ng-template>
+      <p>{{selectedCard.detailedContent}}</p>
+      <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="displayDialog=false" label="Kapat" styleClass="p-button-text"></p-button>
+      </ng-template>
+    }
+  </p-dialog>
+}

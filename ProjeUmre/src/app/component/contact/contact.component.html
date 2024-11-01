@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Örnek Şirket ile iletişime geçin. Her türlü soru ve görüşleriniz için bize ulaşabilirsiniz.">
+  <meta name="keywords" content="iletişim, örnek şirket, telefon, e-posta, adres, destek, müşteri hizmetleri, harita, konum, ulaşım">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Bizimle İletişime Geçin">
+  <meta property="og:description" content="Her türlü soru ve görüşleriniz için bizimle iletişime geçebilirsiniz.">
+  <meta property="og:image" content="path_to_image.jpg">
+  <meta property="og:url" content="https://www.orneksirket.com/iletisim">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bizimle İletişime Geçin - Örnek Şirket">
+  <meta name="twitter:description" content="Her türlü soru ve görüşleriniz için bizimle iletişime geçebilirsiniz.">
+  <meta name="twitter:image" content="path_to_image.jpg">
+  <title>Bizimle İletişime Geçin - Örnek Şirket</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.2/dist/tailwind.min.css">
+</head>
+
+<body class="bg-black  text-white">
+
+  <div class="min-h-screen p-10 flex justify-center">
+    <main class="w-full max-w-screen-lg">
+      <!-- Başlık -->
+      <header class="text-center mb-8">
+        <h1 class="text-4xl font-extrabold mb-4">Bizimle İletişime Geçin</h1>
+        <p class="text-lg text-gray-400">Her türlü soru ve görüşleriniz için bizimle iletişime geçebilirsiniz.</p>
+      </header>
+
+      <!-- Form ve Harita -->
+      <section class="flex flex-col lg:flex-row justify-center lg:space-x-6" aria-label="İletişim Formu ve Harita">
+
+        <!-- İletişim Formu -->
+        <article class="lg:w-1/2 bg-gray-800 p-8 rounded-lg shadow-lg hover:shadow-2xl mb-6 lg:mb-0" aria-label="İletişim Formu">
+          <form [formGroup]="contactForm" (ngSubmit)="sendEmail()" class="space-y-6" aria-label="İletişim Formu">
+            <div class="mb-4">
+              <label for="name" class="block text-sm font-medium mb-2">Adınız - Soyadınız:</label>
+              <input type="text" id="name" formControlName="name"
+                class="w-full p-3 rounded border border-gray-600 bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all"
+                placeholder="Adınız ve Soyadınız" aria-required="true" />
+              <div *ngIf="contactForm.get('name')?.invalid && (contactForm.get('name')?.dirty || contactForm.get('name')?.touched)"
+                class="text-red-500 text-sm mt-1" aria-live="polite">İsim alanı zorunludur.</div>
+            </div>
+
+            <div class="mb-4">
+              <label for="number" class="block text-sm font-medium mb-2">Telefon Numaranız:</label>
+              <p-inputMask (onFocus)="onFocusNumber($event)"
+                styleClass="w-full p-3 rounded border border-gray-600 bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all"
+                mask="(999) 999-9999" id="number" formControlName="number" placeholder="(999) 999-9999" aria-required="true" />
+              <div *ngIf="contactForm.get('number')?.invalid && (contactForm.get('number')?.dirty || contactForm.get('number')?.touched)"
+                class="text-red-500 text-sm mt-1" aria-live="polite">Geçerli bir telefon numarası giriniz.</div>
+            </div>
+
+            <div class="mb-4">
+              <label for="email" class="block text-sm font-medium mb-2">E-posta:</label>
+              <input type="email" id="email" formControlName="email"
+                class="w-full p-3 rounded border border-gray-600 bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all"
+                placeholder="E-posta adresiniz" aria-required="true" />
+              <div *ngIf="contactForm.get('email')?.invalid && (contactForm.get('email')?.dirty || contactForm.get('email')?.touched)"
+                class="text-red-500 text-sm mt-1" aria-live="polite">Geçerli bir e-posta adresi giriniz.</div>
+            </div>
+
+            <div class="mb-4">
+              <label for="message" class="block text-sm font-medium mb-2">Mesajınız:</label>
+              <textarea id="message" formControlName="message"
+                class="w-full p-3 rounded border border-gray-600 bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all"
+                placeholder="Mesajınızı buraya yazın" aria-required="true"></textarea>
+              <div *ngIf="contactForm.get('message')?.invalid && (contactForm.get('message')?.dirty || contactForm.get('message')?.touched)"
+                class="text-red-500 text-sm mt-1" aria-live="polite">Mesaj alanı zorunludur.</div>
+            </div>
+
+            <button type="submit"
+              class="w-full bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600 transition-colors transform hover:scale-105"
+              [disabled]="contactForm.invalid" (click)="checkFormValidity()">Gönder</button>
+
+            <div *ngIf="isFormInvalid" class="text-red-500 text-sm text-center mt-2" aria-live="polite">
+              Lütfen tüm alanları doldurun.
+            </div>
+          </form>
+        </article>
+
+        <!-- Harita -->
+        <aside class="lg:w-1/2 flex justify-center items-start" aria-label="Google Haritası">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24484.012774733095!2d32.75268949550782!3d39.90778980665469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d347a5b2502ab5%3A0x73e31266eb48a686!2zQU_DhyBHQVRBIDEwMC4gWcSxbCBPcm1hbsSx!5e0!3m2!1str!2str!4v1725628077166!5m2!1str!2str"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </aside>
+
+      </section>
+
+      <!-- İletişim Bilgileri -->
+      <footer class="mt-12 text-center">
+        <h2 class="text-3xl font-semibold mb-4">İletişim Bilgilerimiz</h2>
+        <p class="text-lg mb-2">Adres: Örnek Cadde, Örnek Şehir, Türkiye</p>
+        <p class="text-lg mb-2">Telefon: <a href="tel:+901234567890" class="text-yellow-400 hover:underline">0541 320 06 06</a></p>
+        <p class="text-lg mb-2">E-posta: <a href="mailto:info@example.com" class="text-yellow-400 hover:underline">info&#64;doratour.com</a></p>
+      </footer>
+    </main>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+/* Tüm @import kuralları en üstte olmalı */
+@import "primeicons/primeicons.css";
+
+/* Daha sonra diğer Tailwind ve CSS kuralları gelir */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer tailwind-base {
+  /* Tailwind taban katmanınızı buraya yerleştirin */
+}

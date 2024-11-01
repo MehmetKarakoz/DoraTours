@@ -1,0 +1,20 @@
+#scrollToTop {
+    position: fixed; /* Sabit konumda olmasını sağlar */
+    bottom: 90px; /* Ekranın altından 120 piksel yukarıda */
+    right: 25px; /* Ekranın sağından 20 piksel içeride */
+    background-color: #FFD700; /* Arka plan rengi */
+    padding: 10px; /* İç boşluk */
+    z-index:4;
+    border-radius: 20px; /* Kenarları yuvarlatır */
+    cursor: pointer; /* İmleç buton üzerindeyken değişir */
+    display: flex; /* Flexbox ile içerik ortalanır */
+    align-items: center; /* Dikey olarak ortalar */
+    justify-content: center; /* Yatay olarak ortalar */
+    font-size: 24px; /* Yazı boyutunu büyük yapar */
+    font-weight: bold; /* Kalın yapar */
+}
+
+.scroll-icon {
+    display: inline-block; /* İçeriği inline-block yapar */
+    line-height: 1; /* Satır yüksekliğini ayarlar */
+}

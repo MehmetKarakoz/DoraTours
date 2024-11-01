@@ -1,0 +1,14 @@
+/* content.component.css */
+.content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    color: #d4af37; /* Altın sarısı */
+    text-align: center;
+}
+
+.content-container h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+}

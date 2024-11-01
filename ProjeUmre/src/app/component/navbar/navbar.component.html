@@ -1,0 +1,19 @@
+<nav class="navbar background">
+    <div class="logo">
+        <a routerLink="/Home"><img src="/Dora_logo1.png" alt=" Dora TOURS Logo"></a>
+    </div>
+    <div class="menu-icon" (click)="toggleMenu()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+    <ul class="menu-bar h-auto" [class.active]="isMenuActive">
+        <li><a routerLink="" routerLinkActive="active">Anasayfa</a></li>
+        <li><a routerLink="Turlar" routerLinkActive="active">Turlar</a></li>
+        <li><a routerLink="/Hac" routerLinkActive="active">Hac</a></li>
+        <li><a routerLink="/Umre" routerLinkActive="active">Umre</a></li>
+        <li><a routerLink="/kudus" routerLinkActive="active">Kudüs</a></li>
+        <li><a routerLink="/About" routerLinkActive="active">Hakkımızda</a></li>
+        <li><a routerLink="/Contact" routerLinkActive="active">İletişim</a></li>
+    </ul>
+</nav>
